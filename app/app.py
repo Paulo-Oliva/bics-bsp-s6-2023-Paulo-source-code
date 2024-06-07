@@ -71,4 +71,6 @@ if __name__ == "__main__":
         raise Exception("The training folder does not exist. Please check installation instructions.")
     if not os.path.exists("../training/checkpoints/pixelart/"):
         os.makedirs("../training/checkpoints/pixelart/")
+    if not os.path.exists("../training/results/pixelart/test_latest/images/"):
+        os.makedirs("../training/results/pixelart/test_latest/images/")
     app.run(debug=True)
