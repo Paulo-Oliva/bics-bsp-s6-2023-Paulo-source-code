@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pixel Art Generator</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+	<script src="{{ url_for('static', filename='index.js') }}"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h1>CycleGAN PixelArt Generator</h1>
+		<form action="/upload" method="post" enctype="multipart/form-data">
+			<div class="row">
+				<div class="column">
+					<div class="drag-drop">Drag and drop image here</div>
+					<label for="file-upload" class="upload-btn">Select Image</label>
+					<input type="file" id="file-upload" name="file">
+				</div>
+				<div class="container" id="options">
+					<h2>Options</h2>
+					<div class="option">
+						<label for="model">Model</label>
+						<select name="model" id="model">
+							{% for model in models %}
+							<option value="{{ model }}">{{ model }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="option">
+						<label for="preprocess">Preprocessing</label>
+						<select name="preprocess" id="preprocessing"
+							title="'Resize and Crop' resizes the image to (Load Size, Load Size) and does a random crop of size (Crop Size, Crop Size). 'Crop' only performs random cropping. 'Scale Width' resizes the image to have width (Width). 'Scale Width and Crop' first resizes the image to have width (Width) and then does random cropping of size (Crop Size, Crop Size).">
+							<option value="none">None</option>
+							<option value="resize_and_crop">Resize and Crop</option>
+							<option value="crop">Crop</option>
+							<option value="scale_width">Scale Width</option>
+							<option value="scale_width_and_crop">Scale Width and Crop</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+		<input type="submit" value="Upload">
+	</div>
+</body>
+
+</html>
