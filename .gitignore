@@ -163,3 +163,4 @@ training/
 fid/models/
 fid/images/
 .vscode/
+app/static/uploads/
